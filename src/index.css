@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #090D19;
+    color: #F3F8FB;
+    color-scheme: dark;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Cosmic glass surfaces */
+.cosmic-panel {
+  background: linear-gradient(145deg, rgba(23, 36, 61, 0.78), rgba(14, 21, 38, 0.86));
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(116, 199, 232, 0.14);
+}
+
+.cosmic-panel-aubergine {
+  background: linear-gradient(145deg, rgba(36, 27, 53, 0.8), rgba(18, 16, 36, 0.88));
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(146, 119, 245, 0.2);
+}
+
+.cosmic-panel-ocean {
+  background: linear-gradient(145deg, rgba(16, 51, 51, 0.78), rgba(10, 26, 34, 0.88));
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(54, 214, 196, 0.2);
+}
+
+/* Custom sleek range sliders for editable health conditions */
+input[type="range"].cosmic-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(145, 161, 184, 0.22);
+  outline: none;
+}
+
+input[type="range"].cosmic-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #36D6C4;
+  border: 2px solid #090D19;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(54, 214, 196, 0.45);
+}
+
+input[type="range"].cosmic-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #36D6C4;
+  border: 2px solid #090D19;
+  cursor: pointer;
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(9, 13, 25, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(101, 139, 170, 0.35);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(54, 214, 196, 0.5);
+}

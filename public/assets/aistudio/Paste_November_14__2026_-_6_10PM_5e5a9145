@@ -1,0 +1,676 @@
+# SPACE PULSE – Phase 5: Preventive Recommendations & Emergency Support
+
+Add Preventive Recommendations & Emergency Support directly to my existing SPACE PULSE application.
+
+## IMPORTANT IMPLEMENTATION INSTRUCTIONS
+
+- Do not create a new application or rebuild my existing project.
+- Preserve the existing design, navigation, theme, layout and functionality.
+- Add Phase 5 to the existing SPACE PULSE application.
+- Phase 5 must depend directly on Phase 3: Intelligent Health & Environmental Analysis and Phase 4: Automated Alert & Notification System.
+- Use the structured analytical findings, risk classifications, explanations, sensor readings, uncertainty information and recommended actions produced by Phase 3.
+- Use the alerts, notification records, astronaut acknowledgments, alert statuses, ground medical team notifications and alert history created by Phase 4.
+- Do not create a duplicate health monitoring system, environmental monitoring system, analytical engine or alert-generation system.
+- Do not repeat Phase 3’s analysis or independently recalculate its risk classifications.
+- Do not independently create new alerts that duplicate Phase 4 alerts.
+- Phase 3 is responsible for analysing readings, identifying findings, assigning risk classifications and providing recommended actions.
+- Phase 4 is responsible for converting Phase 3 findings into alerts and notifications.
+- Phase 5 is responsible for turning those alerts and Phase 3 recommendations into clear preventive guidance, emergency-support workflows, follow-up monitoring, communication-delay handling and ground medical team escalation support.
+- We do not currently have physical sensors. All recommendations, emergency workflows and follow-up monitoring must be demonstrated using the existing simulated data, Phase 3 analytical reports and Phase 4 alerts.
+- Clearly label all simulated readings, findings, alerts, recommendations and emergency-support information as SIMULATED DATA.
+- Do not claim that real ground medical personnel, emergency services or mission control have been contacted.
+
+## 1. Phase 5 Objective
+
+Develop a Preventive Recommendations & Emergency Support system that helps astronauts take appropriate action before health or environmental concerns become more serious.
+
+SPACE PULSE must not simply tell astronauts that something is wrong. It must provide clear, useful and prioritized next steps based on:
+
+- The astronaut’s health readings.
+- Environmental sensor readings.
+- The selected or detected mission environment.
+- The type and severity of the detected concern.
+- The Phase 3 analytical finding.
+- The Phase 4 alert level and alert status.
+- The trend and duration of the concern.
+- The confidence and completeness of the available data.
+- Mission-approved procedures and protocols.
+- EVA or suited status, where relevant.
+- Communication availability and delay, especially for Mars Transit and Mars Base.
+
+Phase 5 must provide decision support and safety escalation. It must not diagnose medical conditions, prescribe medication, replace qualified medical personnel, or replace approved mission procedures.
+
+## 2. Phase 3 and Phase 4 Data Dependency
+
+Phase 5 must use Phase 3’s structured analytical reports and Phase 4’s alert records as its source of truth.
+
+Use the information provided by Phase 3 and Phase 4, including where available:
+
+- Unique analytical finding ID.
+- Unique alert ID.
+- Astronaut ID.
+- Mission environment.
+- Specific location or base.
+- Detection timestamp.
+- Relevant health readings.
+- Relevant environmental readings.
+- Previous readings.
+- Detected changes.
+- Environmental exposure history.
+- Reported symptoms.
+- Individual health baseline comparisons.
+- Astronaut activity and mission context.
+- Possible environmental-health relationships.
+- Sensor reliability and data-quality information.
+- Risk classification: Advisory, Warning or Critical.
+- Concern category: Environmental, Health or Combined.
+- Explanation of the finding.
+- Analytical confidence and uncertainty.
+- Suggested preventive actions.
+- Suggested notification priority.
+- Phase 4 alert level: Advisory, Warning or Critical.
+- Phase 4 alert status: Active, Acknowledged or Resolved.
+- Astronaut acknowledgment status.
+- Ground medical team notification status.
+- Communication status and queued-data status.
+
+Do not use a separate set of invented readings, findings or alerts for Phase 5. The recommendations and emergency-support information shown to the astronaut must match the Phase 3 analytical report and Phase 4 alert.
+
+If a report or alert contains incomplete or uncertain information, display that limitation clearly rather than filling in missing details.
+
+## 3. Sensor Health Monitoring and Failure Detection
+
+Add a Sensor Health Monitoring module to the existing SPACE PULSE application.
+
+The module must continuously check whether every virtual sensor is working correctly and must detect sensor failures, interruptions, inconsistencies and degraded data quality.
+
+The system must detect the following sensor issues:
+
+- A heart-rate sensor suddenly stops sending readings.
+- An SpO2 sensor gives incomplete, missing or inconsistent values.
+- A temperature sensor sends the same reading continuously.
+- A wearable device disconnects.
+- A sensor battery becomes low.
+- Data transmission is interrupted.
+- A sensor sends delayed readings.
+- A sensor sends values outside its expected plausible range.
+- A sensor produces abnormal spikes, gaps, repeated values or inconsistent patterns.
+- A sensor reports conflicting values compared with related sensors.
+- A sensor’s data quality becomes uncertain or unreliable.
+
+For every virtual sensor, the Sensor Health Monitoring module must track:
+
+- Sensor ID and sensor type.
+- Astronaut ID.
+- Mission environment and specific location.
+- Last successful reading timestamp.
+- Expected update frequency or reading interval.
+- Time since the last reading.
+- Connection status.
+- Battery status, where applicable.
+- Data transmission status.
+- Data completeness.
+- Data consistency.
+- Data plausibility.
+- Data quality score or reliability status.
+- Detected failure type.
+- Failure detection timestamp.
+- Duration of the failure.
+- Whether the failure is ongoing or resolved.
+
+The module must classify sensor issues into clear categories:
+
+1. Healthy
+2. Degraded
+3. Delayed
+4. Intermittent
+5. Disconnected
+6. Low Battery
+7. Inconsistent or Implausible
+8. Transmission Interrupted
+9. Failed or Unavailable
+
+When a sensor issue is detected, the system must:
+
+- Display a clear sensor-status indicator on the dashboard.
+- Identify the affected sensor, astronaut, environment and location.
+- Show the type of issue and the time it was detected.
+- Mark the affected readings as unreliable, incomplete, delayed or unavailable.
+- Prevent the system from treating missing or unreliable readings as normal readings.
+- Clearly state when a health or environmental concern cannot be properly assessed because sensor data is missing or unreliable.
+- Notify the astronaut with an appropriate sensor-status alert.
+- Create or update a ground medical team notification for significant sensor failures, according to the severity and mission context.
+- Store the sensor failure event, affected readings, failure duration and recovery status in the event history.
+- Update the sensor status when the sensor recovers, reconnects or begins sending valid readings again.
+- Preserve the full sensor-failure history, including the original failure time, affected readings and recovery time.
+
+Sensor failure detection must not be confused with a real health or environmental emergency. For example, if a heart-rate sensor stops sending readings, the system must report a sensor failure or data gap; it must not automatically conclude that the astronaut’s heart rate is abnormal.
+
+If a safety-critical sensor fails, the system must:
+
+- Clearly identify the missing or unreliable safety-critical reading.
+- Warn the astronaut that monitoring coverage is reduced.
+- Recommend appropriate fallback procedures according to mission protocol.
+- Escalate the issue to onboard medical personnel or ground control when required.
+- Avoid inventing replacement readings or estimating missing safety-critical values without clearly labelling them as estimates.
+
+All sensor health information, failure alerts and recovery updates must be clearly labelled as SIMULATED DATA.
+
+## 4. Preventive Recommendation Engine
+
+Create a Preventive Recommendation Engine that receives Phase 3 analytical findings and Phase 4 alerts, then provides practical next steps to the astronaut.
+
+Each recommendation must be based on:
+
+- The Phase 3 analytical finding.
+- The Phase 4 alert level.
+- The astronaut’s current mission environment.
+- The concern category: Environmental, Health or Combined.
+- The severity and urgency of the concern.
+- The relevant health and environmental readings.
+- The trend and duration of the concern.
+- Whether multiple related readings support the same concern.
+- The confidence and completeness of the available data.
+- Mission-approved procedures and protocols.
+- EVA or suited status, where relevant.
+- Communication availability and delay.
+- Sensor health and data-quality information.
+
+The recommendation engine must categorize every concern using the following severity levels:
+
+1. Normal
+2. Caution
+3. Warning
+4. Critical
+5. Emergency
+
+For each severity level, define:
+
+- The meaning of the level.
+- The astronaut-facing message and recommended action.
+- The ground medical team notification or escalation requirement.
+- Whether immediate escalation is required.
+- Whether the astronaut must acknowledge the recommendation.
+- Whether follow-up monitoring is required.
+- What information must be recorded in the recommendation and event log.
+- What conditions would escalate or de-escalate the concern.
+
+Do not independently change the risk classification assigned by Phase 3. Use the Phase 3 classification and Phase 4 alert level as the basis for the recommendation severity.
+
+These severity levels are for the educational software demonstration and must not be presented as medically validated emergency criteria.
+
+## 5. Recommendation Types
+
+Create separate recommendation categories for:
+
+1. Immediate safety actions.
+2. Preventive health actions.
+3. Environmental protection actions.
+4. Rest, hydration, nutrition and recovery guidance.
+5. Activity modification or workload reduction.
+6. Medical assessment requests.
+7. Ground-control or onboard-medical escalation.
+8. Emergency procedure access.
+9. Follow-up monitoring.
+10. Sensor-failure response and fallback monitoring.
+
+Each recommendation must include:
+
+- A short, clear title.
+- A concise explanation of why it is recommended.
+- The specific recommended action.
+- The relevant Phase 3 finding and Phase 4 alert.
+- The relevant readings or environmental factors that triggered it.
+- The severity level.
+- The confidence level.
+- The required follow-up monitoring.
+- The escalation target, such as astronaut, onboard medical personnel, mission control or ground medical team.
+- A timestamp and audit record.
+
+The system must distinguish between:
+
+- Recommendations based on a single abnormal reading.
+- Recommendations based on a sustained trend.
+- Recommendations supported by multiple related readings.
+- Recommendations affected by missing, delayed, uncertain, conflicting or unreliable sensor data.
+- Immediate safety risks that require urgent escalation.
+- Sensor failures that reduce monitoring coverage but do not themselves confirm a health or environmental concern.
+
+## 6. False-Alarm Prevention and Escalation Rules
+
+Design rules to prevent unnecessary recommendations and alerts while ensuring that genuine safety-critical risks are escalated immediately.
+
+The system must:
+
+- Use severity-based thresholds for each reading and environment.
+- Consider reading trends, duration and rate of change.
+- Consider whether multiple related readings support the same concern.
+- Consider environmental context, such as EVA status, activity level, rover operation, cabin conditions and mission phase.
+- Consider sensor health, data quality, missing readings and unreliable readings.
+- Require confirmation from multiple related readings or a persistent trend before escalating non-immediate risks.
+- Immediately escalate clear safety-critical events, even if data is incomplete.
+- Mark non-urgent concerns as “Caution” or “Warning” until confirmed by additional evidence or a sustained trend.
+- Clearly identify uncertainty, missing data and sensor failures.
+- Avoid over-alerting the astronaut or ground medical team.
+- Allow authorized personnel to review, acknowledge, resolve or escalate recommendations and alerts.
+- Maintain a complete audit trail of recommendations, acknowledgments, actions and escalations.
+
+Do not delay or suppress immediate safety-critical events, such as a critical environmental hazard, severe suit abnormality, major physiological deterioration or emergency procedure requirement.
+
+Do not treat a sensor failure as a confirmed health or environmental emergency. Treat it as a monitoring reliability issue and follow the appropriate sensor-failure response workflow.
+
+## 7. Treatment Boundaries
+
+The system must not diagnose medical conditions or prescribe medication.
+
+For non-trivial or potentially serious health concerns, SPACE PULSE must:
+
+- Direct the astronaut to approved mission procedures.
+- Recommend an appropriate medical assessment according to mission protocol.
+- Inform onboard medical personnel and ground control when required.
+- Provide relevant readings, historical trends, symptoms and environmental context for review.
+- Avoid diagnosing a condition or recommending medication.
+
+For trivial or low-risk lifestyle concerns, such as hydration, nutrition, rest, sleep or light activity, the system may provide general educational suggestions, for example:
+
+- Recommend drinking water or an electrolyte drink if hydration-related readings or context suggest mild dehydration.
+- Recommend a balanced meal or appropriate snack when nutrition or energy-related context suggests a need.
+- Recommend rest, sleep or reduced workload when fatigue-related context suggests recovery may help.
+- Recommend light movement or stretching where appropriate for the mission environment and astronaut condition.
+
+All such suggestions must:
+
+- Be clearly labelled as general preventive guidance, not medical treatment.
+- Be based on the available simulated readings, Phase 3 findings and mission context.
+- Avoid medical claims, diagnoses or medication recommendations.
+- Escalate to medical assessment or approved procedures when the concern is not trivial, persists, worsens or involves safety-critical readings.
+
+## 8. Example Recommendation Scenarios
+
+Implement the following examples as functional recommendation and emergency-support workflows.
+
+### Example 1: Increased Radiation Exposure
+
+The system detects a concerning simulated radiation reading or cumulative radiation exposure trend.
+
+The system must:
+
+- Use the Phase 3 radiation finding and Phase 4 alert.
+- Notify the astronaut with a clear severity-based recommendation.
+- Display the applicable radiation-protection procedure.
+- Recommend moving to the designated protected area when required by mission protocol.
+- Track the radiation exposure trend and cumulative exposure.
+- Send or queue an escalation notification to ground control according to the severity level and communication status.
+- Provide the relevant radiation readings, exposure duration, environment and historical trend to the ground medical team.
+- Recommend follow-up monitoring after the protective action is taken.
+
+### Example 2: Unusual CO2 Concentration
+
+The simulated environmental sensors detect an increase in cabin CO2 concentration.
+
+The system must:
+
+- Use the Phase 3 CO2 finding and Phase 4 alert.
+- Notify the astronaut and ground medical team according to the severity level.
+- Identify the affected environmental monitoring readings, such as CO2 concentration, cabin pressure, oxygen level, temperature, humidity and ventilation status.
+- Recommend following the approved ventilation and life-support procedures.
+- Monitor subsequent environmental readings to determine whether the situation is improving, stable or worsening.
+- Escalate the recommendation if CO2 remains elevated, continues to increase or reaches a critical threshold.
+- Record the event, recommended actions, astronaut acknowledgment and follow-up readings.
+
+### Example 3: Deteriorating Physiological Readings
+
+The astronaut’s simulated heart rate and respiratory rate show unusual or concerning changes.
+
+The system must:
+
+- Use the Phase 3 physiological finding and Phase 4 alert.
+- Notify the astronaut with an appropriate severity-based recommendation.
+- Recommend an appropriate medical assessment according to mission protocol.
+- Inform onboard medical personnel and ground control when required.
+- Provide relevant historical readings, current readings, environmental context, activity context and trend information for review.
+- Avoid diagnosing a medical condition or recommending medication.
+- Recommend follow-up monitoring and escalate if the readings continue to deteriorate or multiple related indicators become abnormal.
+
+### Example 4: Mild Hydration or Nutrition Concern
+
+The system detects a mild hydration, nutrition, fatigue or recovery-related concern based on simulated readings and mission context.
+
+The system must:
+
+- Use the Phase 3 finding and Phase 4 alert.
+- Display a Caution-level preventive recommendation.
+- Provide general educational suggestions, such as drinking water, consuming an appropriate snack or meal, resting or adjusting activity.
+- Clearly state that the suggestion is general preventive guidance, not medical treatment.
+- Recommend follow-up monitoring.
+- Escalate to a medical assessment or approved procedure if the concern persists, worsens or becomes safety-critical.
+
+### Example 5: Sensor Failure
+
+The heart-rate sensor suddenly stops sending readings, the SpO2 sensor provides inconsistent values, the temperature sensor sends the same reading continuously, or a wearable device disconnects.
+
+The system must:
+
+- Detect the sensor issue using the Sensor Health Monitoring module.
+- Display the affected sensor as Degraded, Delayed, Disconnected, Low Battery, Inconsistent, Transmission Interrupted or Failed.
+- Mark the affected readings as unreliable, incomplete, delayed or unavailable.
+- Notify the astronaut that monitoring coverage is reduced.
+- Avoid treating the missing or unreliable reading as a normal reading.
+- Avoid automatically interpreting the sensor failure as a health emergency.
+- Recommend appropriate fallback procedures according to mission protocol.
+- Escalate the sensor failure to onboard medical personnel or ground control when required.
+- Preserve the sensor-failure event, affected readings, failure duration and recovery history.
+- Update the sensor status when the sensor recovers or begins sending valid readings again.
+
+## 9. Emergency Support System
+
+Design an emergency-support workflow that remains available during communication delays or loss of communication.
+
+For Mars Transit and Mars Base, and optionally for other remote environments, SPACE PULSE must support an autonomous onboard emergency-support system.
+
+Even when communication with Earth is unavailable, the system must:
+
+- Display local recommendations and alerts directly to the astronaut.
+- Keep approved onboard emergency instructions accessible offline.
+- Provide access to mission-approved emergency checklists and procedures.
+- Securely store alerts, health readings, environmental readings, recommendations, astronaut acknowledgments and event histories locally.
+- Queue recommendations, alerts, reports and health records for transmission to ground control when communication becomes available.
+- Show communication status on the dashboard, such as “Connected,” “Delayed,” “Limited Connectivity,” or “Offline — Data Queued.”
+- Clearly indicate when data has not yet been transmitted to ground control.
+- Avoid making medical diagnoses or treatment decisions autonomously.
+
+Communication-delay handling must include:
+
+- Local storage of every alert, recommendation, acknowledgment, action and follow-up reading with a reliable timestamp.
+- A transmission queue for outbound alerts, reports and health records.
+- Automatic retry or queued delivery when communication becomes available.
+- Clear display of queued, delivered and pending communication status.
+- Preservation of the original detection timestamp, even if transmission occurs later.
+- Clear distinction between locally generated recommendations and information received from ground control.
+
+## 10. Emergency Procedures
+
+Create an offline-accessible emergency-support section that includes mission-approved procedures for scenarios such as:
+
+- Radiation exposure or radiation alarm.
+- Elevated CO2 or cabin-air-quality concern.
+- Spacesuit pressure, oxygen, CO2, temperature, humidity, power, communication or dust-intrusion issue.
+- Heat stress or cold exposure.
+- Fire, smoke or atmospheric-contamination event.
+- Decompression or pressure-loss event.
+- Injury, illness or medical emergency.
+- Loss of communication.
+- Sensor failure or reduced monitoring coverage.
+- Multiple simultaneous environmental or health concerns.
+
+For each emergency procedure, include:
+
+- A clear emergency title.
+- The conditions that may require the procedure.
+- Step-by-step approved actions.
+- Required astronaut acknowledgment.
+- Required ground-team or onboard-medical notification.
+- Required follow-up monitoring.
+- Relevant readings and event context.
+- Offline availability status.
+- Communication status and queued-data status.
+
+The emergency procedures must be clearly identified as mission-approved reference procedures, not AI-generated medical treatment instructions.
+
+## 11. Ground Medical Team Support
+
+Extend the existing Phase 4 Ground Medical Team notification panel with preventive recommendation, sensor-failure and escalation support.
+
+For every Warning or Critical recommendation, provide:
+
+- Astronaut ID.
+- Mission environment and specific location.
+- Phase 3 analytical finding ID.
+- Phase 4 alert ID.
+- Recommendation severity and priority.
+- Triggering health or environmental readings.
+- Current readings and relevant historical trend.
+- Time the concern was first detected.
+- Duration of the concern.
+- Recommended action provided to the astronaut.
+- Whether the astronaut acknowledged the recommendation.
+- Whether the recommended action was completed.
+- Communication status and transmission queue status.
+- Data-quality notes, including missing, delayed, uncertain, conflicting or unreliable readings.
+- Sensor health and failure information, where relevant.
+- A concise event timeline.
+
+The ground medical team must be able to:
+
+- Review the situation.
+- Acknowledge the recommendation or escalation.
+- Add mission-approved guidance where appropriate.
+- Monitor follow-up readings.
+- See whether the concern is improving, stable or worsening.
+- Review the communication and transmission status.
+- Review sensor-failure events and recovery status.
+
+Level 1 Advisory recommendations should be displayed to the astronaut. Level 2 Warning and Level 3 Critical recommendations should be displayed to the astronaut and included in the Ground Medical Team panel.
+
+This is an in-app demonstration only. Do not send real emails, SMS messages or external notifications. Do not claim that real medical personnel have received the information.
+
+## 12. Recommendation Status and Follow-Up
+
+Each recommendation must have a status:
+
+- Active.
+- Acknowledged.
+- Action In Progress.
+- Completed.
+- Escalated.
+- Resolved.
+
+Phase 5 must use updates from Phase 3 and Phase 4 to maintain recommendation status.
+
+- If Phase 3 continues reporting the same ongoing finding, update the existing recommendation instead of creating duplicates.
+- If Phase 3 reports that the concern has improved or is no longer present, update the recommendation appropriately.
+- If Phase 3 increases the risk classification, update the recommendation severity and escalation requirement.
+- Do not mark a recommendation as resolved only because the astronaut acknowledged it.
+- Preserve the full recommendation history when a recommendation changes level or status.
+- Keep the original Phase 3 analytical finding ID and Phase 4 alert ID associated with each recommendation.
+
+## 13. Location and Historical Recommendation Handling
+
+Every recommendation must retain its original:
+
+- Astronaut ID.
+- Mission environment.
+- Specific location or base.
+- Relevant sensor IDs.
+- Readings.
+- Detection timestamp.
+- Phase 3 analytical finding ID.
+- Phase 4 alert ID.
+- Sensor health and failure information, where relevant.
+
+When an astronaut changes location:
+
+- Preserve previous recommendations in the history.
+- Keep recommendations associated with the location where the finding was detected.
+- Do not display an old location’s resolved concern as an active concern at the new location.
+- Generate new recommendations only when Phase 3 provides relevant findings for the new location.
+- Do not mix readings, findings or recommendations from different locations.
+
+## 14. Recommendation History
+
+Create a Recommendation History section.
+
+Allow users to:
+
+- View all previous recommendations.
+- Filter by Normal, Caution, Warning, Critical and Emergency.
+- Filter by Health, Environmental and Combined.
+- Filter by Active, Acknowledged, Action In Progress, Completed, Escalated and Resolved.
+- View detection dates and times.
+- Review the readings associated with each recommendation.
+- Open the original Phase 3 analytical finding and Phase 4 alert, where available.
+- Review recommendations associated with previous mission environments and locations.
+- Review communication and transmission status.
+- Review sensor-failure events and recovery history.
+
+Avoid duplicate entries for the same ongoing analytical finding or alert.
+
+## 15. Demonstration Scenarios and Testing
+
+Use Phase 3 analytical findings and Phase 4 alerts to test the Phase 5 recommendation workflow.
+
+| Phase 3 / Phase 4 input | Expected Phase 5 behaviour |
+|---|---|
+| Advisory environmental finding | Create a Caution-level preventive recommendation for the astronaut. |
+| Warning environmental finding with normal health readings | Create a Warning-level recommendation and a ground medical team escalation record. |
+| Critical environmental finding | Create a Critical recommendation, prominent astronaut guidance and a high-priority ground medical team escalation record. |
+| Advisory health finding with normal environmental readings | Create a Caution-level preventive recommendation for the astronaut. |
+| Warning health finding | Create a Warning-level recommendation and a ground medical team escalation record. |
+| Combined health and environmental finding | Display both relevant sets of readings and the possible relationship identified by Phase 3. |
+| Mild hydration, nutrition, fatigue or recovery concern | Provide general preventive guidance without diagnosing or prescribing medication. |
+| Phase 3 finding changes from Warning to Critical | Update the existing recommendation to Critical rather than creating a duplicate. |
+| Phase 3 reports that a concern has resolved | Update the corresponding recommendation status and preserve its history. |
+| Astronaut changes location | Keep previous recommendations associated with the original location. |
+| Phase 3 report has missing or unreliable data | Display the uncertainty and do not invent missing information. |
+| Communication is unavailable | Store the recommendation locally, queue it for transmission and display the offline or queued status. |
+| Communication becomes available | Transmit queued recommendations, alerts and records according to the queue status. |
+| Heart-rate sensor stops sending readings | Detect a sensor failure or data gap, mark the readings as unavailable, notify the astronaut and avoid treating the missing heart rate as a normal reading. |
+| SpO2 sensor sends incomplete or inconsistent values | Detect inconsistent or incomplete data, mark the readings as unreliable and display the data-quality limitation. |
+| Temperature sensor sends the same reading continuously | Detect a repeated-value or frozen-reading issue and mark the sensor as degraded or inconsistent. |
+| Wearable device disconnects | Detect the disconnection, display the sensor as disconnected and preserve the last valid reading with its original timestamp. |
+| Sensor battery becomes low | Display a Low Battery sensor status and notify the astronaut before the sensor becomes unavailable. |
+| Data transmission is interrupted | Detect the interruption, queue or store affected data locally and display the transmission status. |
+| Safety-critical sensor fails | Warn the astronaut about reduced monitoring coverage, recommend fallback procedures and escalate when required. |
+| Sensor recovers after a failure | Update the sensor status, resume normal monitoring and preserve the complete failure and recovery history. |
+
+Verify that the recommendations use the exact readings, classifications, explanations, timestamps, alert statuses and recommended actions supplied by Phase 3 and Phase 4.
+
+## 16. Dashboard and User Experience
+
+Update the existing SPACE PULSE dashboard to include:
+
+- Current active recommendations, sorted by severity and urgency.
+- A clear severity indicator for each recommendation.
+- The reason each recommendation was generated.
+- Required actions and follow-up monitoring.
+- Astronaut acknowledgment controls.
+- Emergency-procedure access.
+- Ground medical team escalation status.
+- Communication status and queued-data indicator.
+- Sensor health and failure indicators.
+- Sensor connection, battery, data-quality and transmission status.
+- Historical recommendation and event timeline.
+- Clear SIMULATED DATA labels.
+
+The dashboard must remain consistent with the existing SPACE PULSE design, navigation, theme and layout.
+
+Make the recommendation interface:
+
+- Modern and professional.
+- Easy to understand.
+- Responsive on mobile and desktop.
+- Consistent with the existing dashboard.
+- Clearly organised by severity level and concern category.
+
+Use:
+
+- Distinct Normal, Caution, Warning, Critical and Emergency visual indicators.
+- Clear recommendation cards.
+- Expandable recommendation details.
+- A dedicated astronaut recommendation area.
+- An extended Ground Medical Team escalation panel.
+- Recommendation history with filters.
+- Emergency-procedure access.
+- Sensor Health Monitoring indicators.
+- Clear SIMULATED DATA labels.
+
+Do not create duplicate dashboards or unnecessary navigation items.
+
+## 17. Implementation and Functionality Requirements
+
+Before implementation:
+
+- Inspect the existing SPACE PULSE application.
+- Inspect the Phase 3 analytical system and its report structure.
+- Inspect the Phase 4 alert and notification system and its data structure.
+- Identify how Phase 3 findings and Phase 4 alerts are stored and updated.
+- Reuse the existing database or Supabase configuration if available.
+- Reuse existing application components and styling.
+- Do not break the existing simulation, dashboards, alerts or historical records.
+
+The implementation must:
+
+- Connect Phase 5 directly to Phase 3 analytical reports and Phase 4 alerts.
+- Use Phase 3 readings, findings, classifications and recommended actions as the source for recommendations.
+- Use Phase 4 alert levels, statuses, acknowledgments and ground medical team notifications as the source for escalation workflows.
+- Generate recommendations automatically when relevant Phase 3 findings and Phase 4 alerts arrive.
+- Support Environmental, Health and Combined categories.
+- Support Normal, Caution, Warning, Critical and Emergency severity levels.
+- Display Advisory recommendations to the astronaut.
+- Display Warning and Critical recommendations to the astronaut and in the Ground Medical Team panel.
+- Keep readings, timestamps, astronaut IDs and locations consistent with Phase 3 and Phase 4.
+- Prevent duplicate recommendations for ongoing findings or alerts.
+- Update recommendations when Phase 3 findings or Phase 4 alerts change.
+- Preserve recommendation history.
+- Make recommendation controls, emergency procedures, communication status, sensor-health indicators and filters functional.
+- Handle missing, delayed, uncertain, conflicting or unreliable information transparently.
+- Clearly label all simulated information.
+
+Prioritise a functional connection between Phase 3, Phase 4 and Phase 5 over unnecessary complexity.
+
+## 18. Data Accuracy and Safety
+
+- Clearly label simulated readings, findings, alerts and recommendations as SIMULATED DATA.
+- Never present simulated readings as actual astronaut measurements.
+- Never claim physical sensors are connected.
+- Never claim real ground medical personnel, emergency services or mission control have been contacted.
+- Do not invent missing readings, analytical findings or alerts.
+- Do not independently diagnose medical conditions.
+- Do not prescribe medication.
+- Do not present possible environmental-health relationships as proven causes.
+- Do not describe demonstration risk classifications or severity levels as clinically validated.
+- Preserve uncertainty and sensor reliability information supplied by Phase 3.
+- Do not replace qualified medical personnel or approved mission procedures.
+- For non-trivial concerns, direct astronauts to approved procedures, onboard medical personnel or ground medical support.
+- For trivial concerns, provide only general preventive guidance and clearly distinguish it from medical treatment.
+- Do not treat a missing, delayed, inconsistent or unreliable sensor reading as a normal reading.
+- Do not automatically interpret a sensor failure as a medical emergency or environmental hazard.
+- Do not invent replacement readings for failed or unavailable sensors.
+- Clearly distinguish sensor failures from actual health or environmental concerns.
+- Clearly label sensor-health statuses, failure alerts and recovery updates as SIMULATED DATA.
+
+## FINAL EXPECTED RESULT
+
+When Phase 5 is implemented, I should be able to:
+
+1. Run the existing SPACE PULSE virtual sensor simulation.
+2. Allow Phase 3 to analyse the simulated health and environmental readings.
+3. Allow Phase 4 to generate alerts and notifications from Phase 3 findings.
+4. Have Phase 5 automatically receive the relevant Phase 3 findings and Phase 4 alerts.
+5. Receive clear preventive recommendations based on the current environment, concern type, severity and available data.
+6. See immediate safety actions for Critical or Emergency concerns.
+7. See preventive guidance for Caution or Warning concerns.
+8. See general hydration, nutrition, rest or recovery suggestions for trivial concerns, clearly labelled as non-medical guidance.
+9. See medical assessment or escalation guidance for non-trivial health concerns.
+10. Access approved emergency procedures offline.
+11. See local alerts and recommendations during communication delays or loss of communication.
+12. See communication status and queued-data status on the dashboard.
+13. Have alerts, recommendations, acknowledgments and health records securely stored locally with timestamps.
+14. Have queued information transmitted to ground control when communication becomes available.
+15. See Warning and Critical recommendations in the Ground Medical Team panel.
+16. Acknowledge recommendations without automatically resolving the underlying concern.
+17. See recommendations update when Phase 3 findings or Phase 4 alerts change.
+18. Review recommendation history and filter by severity, category and status.
+19. Preserve recommendations with their original astronaut, environment, location, Phase 3 finding ID and Phase 4 alert ID.
+20. See sensor health, connection, battery, data-quality and transmission status on the dashboard.
+21. Detect sensor failures, data gaps, inconsistent readings, low battery, wearable disconnection and transmission interruptions.
+22. See sensor failures clearly separated from actual health or environmental concerns.
+23. Receive fallback guidance and escalation support when a safety-critical sensor fails.
+24. Confirm that Phase 5 does not create a duplicate monitoring, analysis or alert-generation system.
+25. Confirm that all recommendations, emergency workflows and communications are in-app demonstrations and no real external messages are sent.
+
+MAIN OBJECTIVE:
+
+Demonstrate how Phase 5 turns Phase 3 analytical findings and Phase 4 alerts into clear preventive recommendations, emergency-support workflows, follow-up monitoring, communication-delay handling, sensor-failure response and ground medical team escalation support.
+
+Phase 5 must depend on Phase 3 and Phase 4. Do not rebuild the existing application, duplicate Phase 3 analysis or Phase 4 alerts, or claim real sensor connectivity.

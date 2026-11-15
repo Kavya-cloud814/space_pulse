@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Serve NASA_Project on Localhost",
+      "type": "shell",
+      "command": "npx --yes serve . -l 3000",
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,913 @@
+[16:46, 14/11/2026] Daniya: # SPACE PULSE – Phase 4: Automated Alert & Notification System
+
+Add an Automated Alert & Notification System directly to my existing SPACE PULSE application.
+
+## IMPORTANT IMPLEMENTATION INSTRUCTIONS
+
+- Do not create a new application or rebuild my existing project.
+- Preserve the existing design, navigation, theme, layout and functionality.
+- Add Phase 4 to the existing SPACE PULSE application.
+- Phase 4 must depend directly on Phase 3: Intelligent Health & Environmental Analysis.
+- Use the structured analytical findings and reports produced by Phase 3, which are based on the health and environmental readings collected by the existing virtual sensor simulation.
+- Do not create a duplicate health monitoring system, environmental monitoring system or analytical eng…
+[16:46, 14/11/2026] Daniya: # SPACE PULSE – Phase 3: Intelligent Health & Environmental Analysis
+
+Add an Intelligent Health & Environmental Analysis feature directly to my existing SPACE PULSE application.
+
+*IMPORTANT:*
+
+- Do not create a new application or rebuild my existing project.
+- Preserve the existing design, navigation, theme, layout and functionality.
+- Add the new features to the existing application.
+- Reuse the existing health monitoring, environmental monitoring, virtual sensor simulation, environment selection and alert systems.
+- Do not create duplicate monitoring systems or duplicate dashboards.
+- We do not currently have physical sensors. Use the existing Virtual Sensor Simulation System to demonstrate all analytical functions.
+- This is a software demonstration using simulated readings, not a real sensor-connected monitoring system.
+- Clearly distinguish simulated readings, analytical findings, possible relationships and confirmed sensor measurements.
+- Do not present possible environmental-health relationships as confirmed medical causes.
+- Phase 3 must prepare analytical findings for Phase 4, the Automated Alert & Notification System.
+
+## 1. Phase 3 Objective – Intelligent Health & Environmental Analysis
+
+Develop an intelligent analytical system that connects individual astronaut health information with their surrounding environmental conditions.
+
+The purpose of Phase 3 is to identify unusual changes in environmental readings, detect changes in astronaut health, analyze possible relationships between environmental exposure and physiological changes, and identify potential health deterioration before it becomes more serious.
+
+SPACE PULSE must analyze each astronaut individually rather than treating all astronauts as having identical health patterns or environmental exposure.
+
+The system must:
+
+- Continuously receive simulated astronaut health readings.
+- Receive simulated environmental readings.
+- Validate incoming readings.
+- Establish individual astronaut health baselines.
+- Monitor environmental exposure.
+- Identify unusual environmental changes.
+- Identify unusual physiological changes.
+- Compare environmental changes with individual health changes.
+- Consider exposure duration and historical information.
+- Consider astronaut activities and mission conditions.
+- Identify potential health and environmental risks.
+- Determine the severity and reliability of analytical findings.
+- Prepare comprehensive risk reports for Phase 4.
+
+The system must not independently diagnose medical conditions.
+
+Its purpose is to identify potential concerns and provide useful information for preventive action and medical assessment.
+
+## 2. Health and Environmental Data Integration
+
+Connect Phase 3 directly to the existing health and environmental monitoring systems.
+
+The analytical engine must receive information from two main categories.
+
+*A. Astronaut Health Data*
+
+Use the existing simulated wearable health sensor readings:
+
+| Sensor           | Data collected                             |
+| ---------------- | ------------------------------------------ |
+| Heart Rate       | Heart rate (BPM) and unusual fluctuations  |
+| SpO₂             | Blood oxygen saturation (%)                |
+| Body Temperature | Body temperature (°C)                      |
+| ECG              | Sample ECG waveform and unusual patterns   |
+| Respiratory      | Breathing rate                             |
+| Motion           | Movement, physical activity and inactivity |
+
+Additional contextual information may include:
+
+- Sleep patterns.
+- Exercise sessions.
+- Astronaut-reported symptoms.
+- Physical workload.
+- Mission activities.
+- EVA and suited status.
+
+*B. Environmental Data*
+
+Use the existing environmental monitoring readings:
+
+| Sensor               | Data collected                           |
+| -------------------- | ---------------------------------------- |
+| Radiation Detector   | Radiation exposure                       |
+| CO₂ Sensor           | Carbon dioxide concentration             |
+| Oxygen Sensor        | Oxygen concentration or partial pressure |
+| Air Quality Sensor   | Airborne contaminants                    |
+| Temperature Sensor   | Environmental temperature                |
+| Humidity Sensor      | Environmental humidity                   |
+| Pressure Sensor      | Environmental pressure                   |
+| Dust/Particle Sensor | Airborne dust and particles              |
+
+Where available, also use:
+
+- Suit pressure.
+- Suit oxygen.
+- Suit CO₂.
+- Suit temperature.
+- Suit humidity.
+- Power and battery status.
+- Communication status.
+
+The system must distinguish between:
+
+*Outside Environment:*
+
+- External radiation.
+- External dust and particles.
+- External temperature.
+- External atmospheric conditions, where applicable.
+
+*Inside Habitat:*
+
+- CO₂.
+- Oxygen.
+- Air quality.
+- Temperature.
+- Humidity.
+- Pressure.
+
+Do not assume that outside environmental conditions automatically affect internal habitat readings.
+
+Environmental and health readings must remain separate in the data structure while being available together for analysis.
+
+## 3. Individual Environmental-Health Relationship Analysis
+
+This is the central feature of Phase 3.
+
+SPACE PULSE must analyze the relationship between environmental conditions and each astronaut's individual health information.
+
+Instead of simply checking whether a health reading is within a general reference range, the system should investigate whether changes in an astronaut's health occur alongside changes in their personal environmental exposure.
+
+The system must:
+
+- Monitor each astronaut individually.
+- Associate available environmental readings with the astronaut's current location.
+- Compare fixed environmental sensor readings with personal environmental sensor readings.
+- Track exposure duration and intensity.
+- Identify unusual changes in physiological readings.
+- Compare health readings with individual health baselines.
+- Consider reported symptoms.
+- Analyze the timing of environmental changes and health changes.
+- Identify repeated patterns across historical records.
+- Identify possible relationships between environmental exposure and health deterioration.
+
+*Example scenario:*
+
+Two astronauts are aboard the same Moon Base.
+
+Astronaut A reports recurring respiratory discomfort.
+
+Astronaut B reports no symptoms.
+
+SPACE PULSE must not assume that both astronauts have experienced identical health effects simply because they share the same environment.
+
+Instead, it should compare:
+
+- Their individual environmental exposure.
+- Their locations within the habitat.
+- Their personal environmental readings, where available.
+- Their activities.
+- Their physiological readings.
+- Their individual health baselines.
+- Their reported symptoms.
+- Their previous exposure history.
+
+The system should identify possible relationships where supported by the available information.
+
+*Important:* A correlation between environmental exposure and health deterioration does not prove that the environmental exposure caused the health change.
+
+The system must clearly distinguish possible relationships from confirmed medical conclusions.
+
+## 4. Independent Environmental Change Detection
+
+SPACE PULSE must identify significant environmental changes even when the astronaut has not experienced any health deterioration.
+
+For example, environmental conditions could become dangerous before the astronaut develops symptoms.
+
+The system must implement two environmental detection methods.
+
+*A. Safety-Limit Detection*
+
+Compare incoming environmental readings against configured or mission-approved safety limits.
+
+Examples:
+
+- Carbon dioxide concentration exceeding an approved limit.
+- Oxygen concentration falling below an approved limit.
+- Radiation exposure reaching a specified limit.
+- Environmental pressure moving outside an acceptable operating range.
+- Air-quality measurements indicating a potentially dangerous condition.
+
+*B. Rapid-Change Detection*
+
+Compare new readings with previous readings to identify unusual changes over time.
+
+Examples:
+
+- A sudden increase in CO₂ concentration.
+- A rapid environmental temperature increase.
+- A sudden increase in radiation.
+- A rapid increase in airborne dust.
+- A sudden decrease in oxygen concentration.
+- An unusual pressure fluctuation.
+
+This feature must identify potentially concerning environmental changes even when the readings have not yet crossed established safety limits.
+
+When an unusual environmental change is detected:
+
+1. Identify the affected environmental variable.
+2. Compare the current reading with previous readings.
+3. Identify how quickly the reading has changed.
+4. Determine which health risks may be relevant.
+5. Identify whether preventive attention is required.
+6. Prepare the relevant finding for Phase 4.
+
+Do not require health deterioration before identifying an environmental hazard.
+
+## 5. Fixed and Personal Environmental Sensor Analysis
+
+SPACE PULSE must use both fixed and personal environmental monitoring information.
+
+*A. Fixed Environmental Sensors*
+
+Represent sensors installed throughout:
+
+- Spacecraft.
+- ISS modules.
+- Lunar rovers.
+- Moon bases.
+- Mars habitats.
+- Mars transit habitats.
+
+These sensors monitor environmental conditions in different locations.
+
+*B. Personal Environmental Sensors*
+
+Represent wearable or portable environmental monitoring equipment where appropriate.
+
+These sensors monitor conditions immediately surrounding an astronaut.
+
+The system should associate readings with:
+
+- Astronaut ID.
+- Sensor ID.
+- Current location.
+- Timestamp.
+- Exposure duration.
+- Relevant activity information.
+
+*Example scenario:*
+
+A fixed air-quality sensor inside a Moon Base reports normal conditions.
+
+However, an astronaut's personal environmental sensor detects an unusual increase in airborne particles.
+
+SPACE PULSE must:
+
+1. Identify the disagreement.
+2. Compare sensor locations.
+3. Check timestamps.
+4. Check sensor reliability and calibration status.
+5. Determine whether the readings represent different environmental conditions.
+6. Identify whether the discrepancy requires investigation.
+7. Communicate uncertainty if the difference cannot be explained.
+
+Do not automatically prioritize personal sensors over fixed sensors or vice versa.
+
+Do not simply average conflicting readings without considering sensor location and measurement reliability.
+
+## 6. Sensor Data Validation and Reliability
+
+Before conducting health and environmental analysis, SPACE PULSE must evaluate the quality of incoming readings.
+
+The system must identify:
+
+- Missing readings.
+- Delayed readings.
+- Outdated readings.
+- Inconsistent measurements.
+- Conflicting sensor information.
+- Potential sensor malfunctions.
+- Calibration concerns.
+- Incorrect timestamps.
+- Duplicate readings.
+- Invalid or unsupported measurement units.
+
+Each reading should contain, where applicable:
+
+- Sensor ID.
+- Astronaut ID.
+- Mission environment.
+- Specific location.
+- Measurement value.
+- Measurement unit.
+- Timestamp.
+- Sensor source.
+- Data-quality status.
+- Reliability information.
+
+Use clear data-quality classifications, such as:
+
+- Valid.
+- Delayed.
+- Missing.
+- Conflicting.
+- Uncertain.
+- Potential Sensor Failure.
+
+The system must not interpret missing data as a normal reading.
+
+*Example scenario:*
+
+Two environmental sensors provide different CO₂ measurements.
+
+SPACE PULSE should compare their information, investigate the difference and flag the readings as conflicting if the discrepancy cannot be resolved.
+
+It must not make a confident health-environment relationship using unreliable information.
+
+When data quality is compromised, the system must continue monitoring and identify which information requires attention.
+
+## 7. Adaptive Environmental Exposure History
+
+SPACE PULSE must analyze previous environmental exposure instead of relying exclusively on current readings.
+
+This is important because an astronaut may experience symptoms after an earlier environmental exposure rather than immediately.
+
+The system must consider:
+
+- Current environmental readings.
+- Previous environmental exposure.
+- Exposure duration.
+- Exposure intensity.
+- Previous physiological readings.
+- Time of reported symptoms.
+- Individual health patterns.
+- Previous locations and environments.
+- Relevant environmental events.
+
+*Example scenario:*
+
+An astronaut is exposed to an increased dust concentration during a Lunar Rover activity.
+
+The astronaut reports respiratory discomfort several hours later.
+
+SPACE PULSE should be able to:
+
+1. Retrieve the earlier dust readings.
+2. Identify the duration of the exposure.
+3. Identify the location where exposure occurred.
+4. Retrieve the astronaut's previous health readings.
+5. Check when the symptom was reported.
+6. Analyze whether the timing suggests a possible relationship.
+7. Identify the finding and its uncertainty.
+
+The historical analysis period must adapt to the environmental hazard being investigated.
+
+Do not assume that every environmental hazard produces immediate health effects.
+
+Use scientifically supported information when defining exposure-analysis periods.
+
+Preserve environmental exposure history when astronauts change mission environments or locations.
+
+Do not mix readings from different locations.
+
+## 8. Hybrid Analytical Intelligence System
+
+Develop a hybrid analytical system that combines four approaches.
+
+### A. Rule-Based Analysis
+
+Use predefined rules and configured or validated safety limits to identify environmental and health readings requiring attention.
+
+Examples:
+
+- Environmental readings exceeding configured safety limits.
+- Sudden environmental changes.
+- Physiological readings outside an approved reference range.
+- Multiple unusual readings occurring together.
+
+Rule-based safety detection must work independently of machine learning.
+
+### B. Individual Health Baseline Analysis
+
+Compare each astronaut's current physiological readings against their established personal health patterns.
+
+Identify:
+
+- Unusual changes.
+- Gradual deterioration.
+- Repeated deviations.
+- Changes from normal individual patterns.
+
+### C. Statistical Analysis
+
+Analyze historical health and environmental readings to identify:
+
+- Trends.
+- Repeated environmental exposure.
+- Changes in physiological measurements.
+- Possible associations between exposure and symptoms.
+- Changes across different mission periods.
+
+Statistical relationships must not be presented as proof of causation.
+
+### D. Machine Learning and Anomaly Detection
+
+Investigate the use of machine learning or anomaly-detection techniques to identify unusual patterns that may not be captured by predefined rules.
+
+However:
+
+- Do not automatically assume machine learning is necessary for every function.
+- Do not invent training data.
+- Do not claim clinical accuracy using simulated datasets.
+- Use machine learning only where sufficient suitable and validated data is available.
+- Prioritize explainable analytical methods for the student prototype.
+
+For the demonstration, prioritize rule-based analysis, individual baselines and statistical trend analysis.
+
+Machine learning may be included as an experimental feature using simulated datasets, clearly labelled as a demonstration.
+
+## 9. Hybrid Individual Health Baselines
+
+Every astronaut must have two separate health reference points.
+
+*A. Pre-Mission Health Baseline*
+
+This represents the astronaut's health patterns before entering the mission environment.
+
+It provides the original reference point for comparison throughout the mission.
+
+*B. Evolving Mission Health Baseline*
+
+This represents the astronaut's developing health patterns during the mission.
+
+It should account for physiological adaptation and changing mission conditions.
+
+SPACE PULSE must compare current health readings against both baselines.
+
+The system must:
+
+- Identify changes from the pre-mission baseline.
+- Identify changes from the evolving mission baseline.
+- Track gradual changes over time.
+- Identify repeated unusual patterns.
+- Update the evolving baseline only according to controlled rules.
+- Restrict baseline updates when potentially concerning deterioration is detected, pending appropriate review.
+
+*Example scenario:*
+
+An astronaut normally has a resting heart rate of 65 BPM before the mission.
+
+Over several weeks, their resting heart rate gradually increases.
+
+Even if individual readings remain within general reference ranges, SPACE PULSE should identify the developing change relative to the astronaut's original health pattern.
+
+It should not automatically classify the gradual deterioration as normal simply because the evolving baseline has changed.
+
+Do not invent astronaut-specific medical thresholds.
+
+## 10. Context-Aware Health Analysis
+
+SPACE PULSE must consider astronaut activities before identifying unusual physiological changes.
+
+Relevant contextual information includes:
+
+- Physical movement.
+- Exercise sessions.
+- Sleep patterns.
+- Mission schedules.
+- EVA activities.
+- Spacesuit status.
+- Physical workload.
+- Resting periods.
+- Reported symptoms.
+
+The system must interpret physiological changes in the context of the astronaut's activities.
+
+*Example scenario:*
+
+An astronaut's heart rate increases from 65 BPM to 100 BPM.
+
+At approximately the same time, environmental temperature increases.
+
+However, the astronaut is performing an exercise session.
+
+SPACE PULSE must consider the activity before assuming that the environmental change is responsible for the increased heart rate.
+
+Compare:
+
+- Heart rate during exercise.
+- Heart rate at rest.
+- Previous activity patterns.
+- Environmental conditions.
+- Relevant health history.
+
+The system must avoid incorrectly associating normal activity-related physiological responses with environmental hazards.
+
+If activity information is unavailable, identify the limitation instead of making unsupported assumptions.
+
+## 11. Environment-Specific Analytical Profiles
+
+Phase 3 must use the environment monitoring profile activated by Phase 2.
+
+Support all seven environments:
+
+1. Spacecraft.
+2. International Space Station (ISS).
+3. Lunar Rover.
+4. Moon Base.
+5. Mars Base.
+
+Each environment must use appropriate analytical priorities.
+
+| Environment  | Priority analytical considerations                                                            |
+| ------------ | --------------------------------------------------------------------------------------------- |
+| Earth        | Pre-mission health, normal gravity, physical activity, sleep and air quality                  |
+| Spacecraft   | Microgravity, radiation, CO₂, cabin air quality, isolation and confinement                    |
+| ISS          | Microgravity, radiation, cabin air quality and long-duration physiological adaptation         |
+| Lunar Rover  | Lunar dust, radiation, spacesuit conditions, temperature, mobility and EVA duration           |
+| Moon Base    | Radiation, lunar dust, reduced gravity, habitat air quality and isolation                     |
+| Mars Transit | Microgravity, radiation, isolation, long-duration exposure and communication delays           |
+| Mars Base    | Radiation, Martian dust, reduced gravity, air quality, environmental conditions and isolation |
+
+For every environment, determine:
+
+- Which health readings are most relevant.
+- Which environmental readings require priority attention.
+- Which exposures should be tracked over time.
+- Which physiological patterns require closer analysis.
+- Which sensor inputs are mandatory or optional.
+- Which analytical rules are applicable.
+- Which potential environmental-health relationships should be investigated.
+
+Do not apply identical monitoring rules to all seven environments.
+
+## 12. Hybrid Risk Assessment and Classification
+
+After analyzing incoming information, SPACE PULSE must determine the potential severity of the detected concern.
+
+Use a hybrid risk-assessment approach that combines a numerical risk score, where technically defensible, with three understandable classifications.
+
+| Level   | Classification | Meaning                                                                            |
+| ------- | -------------- | ---------------------------------------------------------------------------------- |
+| Level 1 | Advisory       | Minor unusual changes requiring observation.                                       |
+| Level 2 | Warning        | Concerning environmental or health changes requiring attention.                    |
+| Level 3 | Critical       | Potentially serious environmental or health situations requiring immediate action. |
+
+The analytical assessment should consider:
+
+- Environmental severity.
+- Degree of health deterioration.
+- Exposure duration.
+- Exposure intensity.
+- Individual health trends.
+- Mission environment.
+- Sensor reliability.
+- Analytical confidence.
+
+The system must explain why a concern was assigned a particular classification.
+
+If a numerical risk score is implemented:
+
+- Explain how it is calculated.
+- Use documented and configurable factors.
+- Avoid arbitrary scores that appear scientifically validated.
+- Keep confidence and data quality separate from severity.
+- Ensure approved critical safety rules take priority over an ordinary risk score.
+
+The system must identify three categories of analytical findings:
+
+*A. Environmental-only concern*
+
+An environmental condition requires attention, even though astronaut health readings remain normal.
+
+*B. Health-only concern*
+
+An unusual astronaut health pattern requires attention, even though environmental readings remain normal.
+
+*C. Combined environmental-health concern*
+
+Environmental changes occur alongside potentially relevant health deterioration.
+
+Do not assume that an environmental-health relationship is established simply because two changes occur at the same time.
+
+## 13. Uncertainty-Aware Analysis
+
+SPACE PULSE must recognize when it does not have enough reliable information to make a confident analytical conclusion.
+
+For example:
+
+- A radiation sensor provides a reading.
+- The astronaut's heart rate changes slightly.
+- Another sensor provides conflicting environmental information.
+- The system has insufficient historical data to establish a meaningful relationship.
+
+In this situation, SPACE PULSE must:
+
+1. Identify which information is missing or unreliable.
+2. Clearly label uncertain readings.
+3. Avoid making unsupported conclusions.
+4. Avoid claiming that an environmental change caused a health symptom.
+5. Continue monitoring for additional information.
+6. Record the analytical uncertainty.
+7. Flag compromised sensor reliability.
+8. Prepare the relevant information for Phase 4.
+
+Uncertainty about a health-environment relationship must never suppress an independently detected environmental safety concern.
+
+The system must distinguish between:
+
+- Confirmed sensor measurements.
+- Unusual readings.
+- Potential environmental-health relationships.
+- Uncertain analytical findings.
+- Confirmed medical conclusions, which the application must not independently make.
+
+## 14. Complete Intelligent Risk Report – Phase 3 to Phase 4 Integration
+
+Phase 3 must prepare a comprehensive analytical report and pass it to Phase 4, the Automated Alert & Notification System.
+
+Phase 3 is responsible for analyzing information and preparing findings.
+
+Phase 4 is responsible for generating notifications and distributing alerts.
+
+Do not create a separate or duplicate alert system.
+
+Each analytical report must contain:
+
+1. Astronaut ID.
+2. Current mission environment.
+3. Specific location.
+4. Detection timestamp.
+5. Relevant health readings.
+6. Relevant environmental readings.
+7. Previous readings.
+8. Detected changes.
+9. Environmental exposure history.
+10. Reported symptoms.
+11. Individual health baseline comparisons.
+12. Activity and mission context.
+13. Possible environmental-health relationships.
+14. Sensor reliability information.
+15. Risk score, where supported.
+16. Risk classification.
+17. Category of concern: Environmental, Health or Combined.
+18. Explanation of why the concern was identified.
+19. Confidence and uncertainty information.
+20. Relevant historical trends.
+21. Recommended preventive actions.
+22. Suggested notification recipients.
+
+The report must make it clear what was measured, what was analyzed and what remains uncertain.
+
+*Example scenario:*
+
+An astronaut aboard the ISS experiences an increase in cabin CO₂ concentration.
+
+The wearable health sensors record an unusual heart rate change, and the astronaut reports a headache.
+
+Phase 3 should prepare a report containing:
+
+- Crew ID: SP-04.
+- Environment: International Space Station.
+- Environmental concern: Increased CO₂ concentration.
+- Health observation: Unusual heart rate change.
+- Reported symptom: Headache.
+- Previous environmental readings.
+- Previous health readings.
+- Individual baseline comparison.
+- Exposure duration.
+- Sensor reliability.
+- Possible environmental-health relationship.
+- Risk classification.
+- Analytical explanation.
+- Suggested preventive actions.
+
+The system must identify a potential relationship without automatically diagnosing the astronaut or claiming causation.
+
+Phase 4 will use this report to generate the appropriate astronaut and ground medical team notifications.
+
+## 15. Historical Data, Trends and Analytical Records
+
+Create or extend the existing analytical history section.
+
+Allow users to review:
+
+- Previous individual health patterns.
+- Pre-mission baseline comparisons.
+- Evolving mission baseline comparisons.
+- Environmental exposure history.
+- Previous environmental changes.
+- Potential environmental-health relationships.
+- Previously detected anomalies.
+- Previous risk classifications.
+- Sensor reliability issues.
+- Historical analytical reports.
+
+Every analytical record must retain:
+
+- Astronaut ID.
+- Environment.
+- Specific location.
+- Relevant sensor IDs.
+- Relevant readings.
+- Timestamp.
+- Analytical finding.
+- Risk classification.
+- Data-quality status.
+
+When an astronaut changes environments or locations:
+
+- Preserve previous historical data.
+- Keep exposure records associated with their original locations.
+- Do not mix readings from different environments.
+- Continue individual health monitoring.
+- Use the correct environmental monitoring profile for the new location.
+
+Historical data must remain available when the simulation is paused or stopped.
+
+Use the existing database or Supabase configuration if already available.
+
+Do not introduce unnecessary new infrastructure.
+
+## 16. Analytical Scenarios and Testing
+
+Create demonstration scenarios to verify that Phase 3 operates correctly.
+
+Include the following:
+
+| Scenario                                                              | Expected analytical behaviour                            |
+| --------------------------------------------------------------------- | -------------------------------------------------------- |
+| Normal environmental conditions and normal health readings            | No unnecessary risk finding                              |
+| Increased CO₂ with normal health readings                             | Independent environmental concern                        |
+| Unusual heart rate with normal environmental readings                 | Independent health concern                               |
+| Increased CO₂ alongside reported headache and unusual health readings | Potential combined environmental-health concern          |
+| Increased dust exposure followed by delayed symptoms                  | Historical exposure analysis                             |
+| Gradual change in resting heart rate                                  | Individual baseline comparison                           |
+| Increased heart rate during exercise                                  | Context-aware interpretation                             |
+| Fixed and personal sensors disagree                                   | Sensor comparison and uncertainty handling               |
+| Environmental sensor stops reporting                                  | Data-quality concern                                     |
+| Delayed environmental readings                                        | Identify outdated data                                   |
+| Insufficient history                                                  | Communicate analytical uncertainty                       |
+| Environmental exposure without health deterioration                   | Preventive environmental finding                         |
+| Multiple simultaneous environmental changes                           | Analyze and prioritize separate concerns                 |
+| Gradual physiological deterioration                                   | Detect changes without automatically normalizing them    |
+| Communication delay during Mars Transit                               | Preserve findings for later transmission through Phase 4 |
+
+Every scenario must demonstrate that the system:
+
+- Receives the appropriate simulated data.
+- Uses the correct environment profile.
+- Evaluates sensor reliability.
+- Compares relevant health and environmental readings.
+- Considers historical exposure.
+- Considers astronaut activity.
+- Identifies potential relationships where supported.
+- Communicates uncertainty.
+- Produces a suitable analytical finding.
+- Prepares the correct report for Phase 4.
+
+## 17. Phase 3 Dashboard and User Interface
+
+Add the analytical functionality directly to the existing SPACE PULSE application.
+
+Preserve the existing design, navigation, theme, layout and functionality.
+
+Do not create a completely new application or duplicate existing dashboards.
+
+Provide an organized analytical section showing:
+
+- Current astronaut health patterns.
+- Individual pre-mission baseline.
+- Evolving mission baseline.
+- Current environmental conditions.
+- Historical environmental exposure.
+- Detected unusual changes.
+- Potential environmental-health relationships.
+- Relevant astronaut activities.
+- Sensor reliability.
+- Analytical confidence.
+- Risk classification.
+- Explanation of detected findings.
+- Suggested preventive actions.
+
+Use:
+
+- Clear metric cards.
+- Trend charts.
+- Historical comparisons.
+- Analytical status indicators.
+- Advisory, Warning and Critical labels.
+- Expandable risk explanations.
+- Clear SIMULATED DATA labels.
+
+The interface must explain why a particular concern was identified without overwhelming users with unnecessary technical information.
+
+Allow users to open an analytical finding to see its associated readings, history, explanation and recommendations.
+
+## 18. Implementation and Functionality Requirements
+
+Before implementation:
+
+- Inspect the existing SPACE PULSE application.
+- Identify the existing health monitoring system.
+- Identify the existing environmental monitoring system.
+- Identify the existing virtual sensor simulation system.
+- Identify the existing environment and location selector.
+- Identify the existing dashboard and historical records.
+- Identify the existing alert and notification system.
+- Identify the existing database or Supabase configuration.
+
+Reuse existing components and data structures wherever possible.
+
+The implementation must:
+
+- Use the same virtual sensor data source as Phase 1.
+- Use the monitoring profile activated by Phase 2.
+- Keep individual astronaut health records correctly associated.
+- Associate environmental readings with their respective locations.
+- Compare health and environmental readings together.
+- Support fixed and personal environmental sensor data.
+- Implement data-quality checks.
+- Implement historical exposure analysis.
+- Implement the two individual health baselines.
+- Implement context-aware analysis.
+- Implement hybrid analytical intelligence.
+- Implement the three risk classifications.
+- Implement uncertainty-aware analysis.
+- Prepare structured reports for Phase 4.
+- Preserve historical analytical records.
+- Update analytical findings as new simulated readings arrive.
+- Avoid duplicate or unnecessary analytical records.
+- Ensure all analytical functions operate correctly when the simulation is paused, resumed or stopped.
+- Ensure all generated information is labelled appropriately as simulated.
+
+Do not create duplicate alert notifications inside Phase 3. Pass the analytical findings to the existing Phase 4 notification system.
+
+Prioritize functional implementation over unnecessary complexity.
+
+## 19. Data Accuracy, Safety and Transparency
+
+This is an educational software demonstration.
+
+Follow these rules:
+
+- Clearly label generated readings as SIMULATED DATA.
+- Never present simulated health readings as actual astronaut measurements.
+- Never claim physical sensors are connected.
+- Never present simulated analytical performance as clinically validated.
+- Never invent NASA requirements.
+- Never invent medical or environmental safety limits.
+- Distinguish established scientific information from proposed engineering solutions.
+- Distinguish correlation from causation.
+- Do not automatically diagnose medical conditions.
+- Do not replace qualified medical personnel or approved mission procedures.
+- Do not treat missing data as normal data.
+- Do not hide uncertainty.
+- Do not make confident conclusions from unreliable sensor readings.
+- Ensure critical environmental safety findings remain detectable even when health information is incomplete.
+
+Use credible NASA publications, scientific research and authoritative technical references when proposing sensor thresholds, exposure periods or analytical methods.
+
+If a validated threshold is unavailable, use an explicitly labelled configurable demonstration value rather than presenting an invented value as an established safety limit.
+
+## 20. Final Expected Result
+
+When opening the existing SPACE PULSE application, I should be able to:
+
+1. Select a mission environment and location.
+2. Activate the relevant environment-specific monitoring profile through Phase 2.
+3. Start the existing virtual sensor simulation.
+4. View simulated astronaut health readings.
+5. View simulated environmental readings.
+6. View fixed and personal environmental sensor information.
+7. View outside environmental conditions separately from inside habitat conditions.
+8. See how Phase 3 analyzes astronaut health alongside environmental readings.
+9. See each astronaut's individual health baseline comparisons.
+10. See pre-mission and evolving mission baselines.
+11. See historical environmental exposure analysis.
+12. See how the system detects gradual health changes.
+13. See how the system considers astronaut activities.
+14. See how sudden environmental changes are detected.
+15. See environmental concerns even when astronaut health remains normal.
+16. See unusual health readings even when environmental conditions remain normal.
+17. See possible relationships between environmental exposure and individual health changes.
+18. See how the system compares fixed and personal sensor readings.
+19. See how the system handles missing, delayed, unreliable and conflicting data.
+20. See how the system handles uncertain analytical findings.
+21. See Advisory, Warning and Critical risk classifications.
+22. Open a detailed analytical finding and understand why it was generated.
+23. View historical health and environmental trends.
+24. View a complete Intelligent Risk Report.
+25. See the report passed to Phase 4.
+26. See how Phase 4 uses the report to generate astronaut and ground medical team notifications.
+27. See preventive recommendations based on the selected environment and detected concern.
+28. Confirm that all previous SPACE PULSE functionality continues working.
+
+*MAIN OBJECTIVE:*
+
+Demonstrate how SPACE PULSE goes beyond ordinary health monitoring by intelligently connecting an astronaut's individual physiological readings with their surrounding environmental conditions.
+
+The system should identify unusual changes, investigate potential environmental-health relationships, recognize developing concerns, analyze historical exposure and provide structured risk findings for automated alerts and preventive action.
+
+*Do not rebuild the existing application. Do not claim real sensor connectivity. Keep the implementation simple, consistent, explainable and reliable.*

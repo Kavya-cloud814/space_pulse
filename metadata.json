@@ -1,0 +1,6 @@
+{
+  "name": "SPACE PULSE",
+  "description": "Astronaut Health & Environmental Monitoring System with Virtual Sensor Simulation, Environment Recognition, Intelligent Analysis, Automated Alerts, Preventive Care, and Continuous Reporting.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
